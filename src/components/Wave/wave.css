@@ -1,6 +1,8 @@
 :root {
   --wave-bg-color: rgba(74, 144, 226, 0.24);
   --wave-color: rgba(74, 144, 226, 0.12);
+
+  --wave-duration: 12s;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -14,20 +16,18 @@
   background-color: var(--wave-bg-color);
 }
 
-.path-0,
-.path-1 {
+.path-0 {
+  fill: var(--wave-color);
+  animation: wave-0 var(--wave-duration);
   animation-timing-function: linear;
   animation-iteration-count: infinite;
 }
 
-.path-0 {
-  fill: var(--wave-color);
-  animation: wave-0 12s infinite;
-}
-
 .path-1 {
   fill: var(--wave-color);
-  animation: wave-1 12s infinite;
+  animation: wave-1 var(--wave-duration);
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
 }
 
 @keyframes wave-0 {
