@@ -1,0 +1,26 @@
+:root {
+  --wave-bg-color: rgba(74, 144, 226, 0.24);
+  --wave-color: rgba(74, 144, 226, 0.12);
+
+  --wave-duration: 12s;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --wave-bg-color: rgba(42, 42, 42, 0.75);
+    --wave-color: rgba(42, 42, 42, 0.5);
+  }
+}
+
+.wave {
+  background-color: var(--wave-bg-color);
+  min-height: 16rem;
+}
+
+.path-0 {
+  fill: var(--wave-color);
+}
+
+.path-1 {
+  fill: var(--wave-color);
+}

@@ -5,11 +5,11 @@ import { Group } from "three";
 import { useGLTF } from "@react-three/drei";
 // import { useFrame } from "@react-three/fiber";
 
-useGLTF.preload("/Book.glb");
+useGLTF.preload("/task_board.glb");
 
 export default function Model() {
   const group = useRef<Group>(null);
-  const { scene } = useGLTF("/Book.glb");
+  const { scene } = useGLTF("/task_board.glb");
   //   const { actions } = useAnimations(animations, scene);
   //   const scroll = useScroll();
 
