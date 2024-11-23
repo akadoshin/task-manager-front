@@ -1,10 +1,8 @@
-"use client";
-
 import { Suspense, useEffect, useRef } from "react";
 
 import { Mesh } from "three";
 import { Canvas, ThreeElements } from "@react-three/fiber";
-// import { OrbitControls } from "@react-three/drei";
+import { Environment, Loader, OrbitControls } from "@react-three/drei";
 
 import Model from "./Model";
 
@@ -19,18 +17,11 @@ function Box(props: ThreeElements["mesh"]) {
 
       // meshRef.current.rotation.y = -2.8 + gamma * (Math.PI / 360);
       // meshRef.current.rotation.x = 0.26 + beta * (Math.PI / 360);
-      // Convierte de grados a radianes
       const alphaRad = alpha * (Math.PI / 180);
       const betaRad = beta * (Math.PI / 180);
       const gammaRad = gamma * (Math.PI / 180);
 
-      // Aplica las rotaciones con ajustes para el eje inicial
-      meshRef.current.rotation.set(
-        -1.6 + betaRad, // Rotación en el eje X
-        -2.8 + gammaRad, // Rotación en el eje Y
-        alphaRad // Rotación en el eje Z
-      );
-      console.log(meshRef.current.rotation);
+      meshRef.current.rotation.set(-1.6 + betaRad, -2.8 + gammaRad, alphaRad);
     };
 
     if (window.DeviceOrientationEvent) {
@@ -47,7 +38,25 @@ function Box(props: ThreeElements["mesh"]) {
   }, []);
 
   return (
-    <mesh {...props} ref={meshRef} scale={1.6} rotation={[0.26, -2.8, 0]}>
+    <mesh
+      {...props}
+      ref={meshRef}
+      scale={1.4}
+      rotation={[0.3, -2.8, -0.2]}
+      position={[0, 0.05, 0.5]}
+    >
+      <OrbitControls
+        enableZoom={false}
+        // autoRotate
+        autoRotateSpeed={2}
+        maxPolarAngle={Math.PI / 2}
+        minPolarAngle={Math.PI / 2}
+        minAzimuthAngle={-Math.PI / 4}
+        maxAzimuthAngle={Math.PI / 4}
+        enableDamping
+        dampingFactor={0.1}
+        rotateSpeed={0.4}
+      />
       <Model />
     </mesh>
   );
@@ -55,27 +64,25 @@ function Box(props: ThreeElements["mesh"]) {
 
 export default function Scene() {
   return (
-    <div className="h-96 w-full absolute top-14">
-      <Canvas gl={{ antialias: true }} dpr={[1, 1.5]}>
-        <ambientLight intensity={Math.PI / 1.5} />
+    <div className="h-[50vh] w-full absolute top-4">
+      <Canvas
+        linear
+        shadows
+        dpr={[1, 1.5]}
+        gl={{ antialias: true }}
+      >
+        <ambientLight intensity={Math.PI / 0.85} />
         <spotLight
-          position={[5, 5, 5]}
-          angle={0.5}
+          position={[-25, 45, 5]}
+          angle={0.4}
           penumbra={1}
-          decay={0.35}
-          intensity={Math.PI * 1.2}
+          decay={0.5}
+          intensity={Math.PI * 2.5}
         />
 
-        {/* <OrbitControls
-          enableZoom={false}
-          autoRotate
-          autoRotateSpeed={0.5}
-          dampingFactor={0.05}
-          maxPolarAngle={Math.PI / 2}
-          minPolarAngle={Math.PI / 2}
-        /> */}
+        <Environment preset="dawn" />
 
-        <Suspense fallback={null}>
+        <Suspense fallback={<Loader />}>
           <Box />
         </Suspense>
       </Canvas>

@@ -37,7 +37,7 @@ export default function Home() {
         <Scene />
       </Wave>
 
-      <div className="px-6 mt-16">
+      <div className="px-6 mt-2">
         <h1 className="text-4xl text-left">
           <b>Task Manager</b>
         </h1>

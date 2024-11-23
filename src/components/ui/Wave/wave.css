@@ -14,7 +14,7 @@
 
 .wave {
   background-color: var(--wave-bg-color);
-  min-height: 16rem;
+  min-height: 32vh;
 }
 
 .path-0 {
@@ -23,4 +23,5 @@
 
 .path-1 {
   fill: var(--wave-color);
+  padding-top: 4rem;
 }
