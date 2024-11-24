@@ -1,11 +1,15 @@
+"use client";
+
 import { useMemo } from "react";
 import { motion } from "framer-motion";
 
-import "./wave.css";
+/** utils */
+import { cn } from "@/lib/utils";
 
 export default function Wave({
   children,
-}: Readonly<{ children: React.ReactNode }>) {
+  className,
+}: Readonly<{ children: React.ReactNode; className?: string }>) {
   const wave0 = useMemo(() => {
     const wave = [
       "M0,160L40,144C80,128,160,96,240,80C320,64,400,64,480,96C560,128,640,192,720,208C800,224,880,192,960,170.7C1040,149,1120,139,1200,133.3C1280,128,1360,128,1400,128L1440,128L1440,0L1400,0C1360,0,1280,0,1200,0C1120,0,1040,0,960,0C880,0,800,0,720,0C640,0,560,0,480,0C400,0,320,0,240,0C160,0,80,0,40,0L0,0Z",
@@ -26,7 +30,9 @@ export default function Wave({
 
   return (
     <section>
-      <div className="wave">{children}</div>
+      <div className={cn("wave min-h-[40vh] bg-[--wave-bg-color]", className)}>
+        {children}
+      </div>
       <motion.svg
         width="100%"
         height="100%"
@@ -37,7 +43,7 @@ export default function Wave({
         <motion.path
           stroke="none"
           strokeWidth="0"
-          className="path-0"
+          className="fill-[--wave-color]"
           d={wave0[0]}
           animate={{
             d: wave0,
@@ -47,7 +53,7 @@ export default function Wave({
         <motion.path
           stroke="none"
           strokeWidth="0"
-          className="path-1"
+          className="fill-[--wave-color]"
           d={wave1[0]}
           animate={{
             d: wave1,

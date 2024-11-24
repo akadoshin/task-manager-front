@@ -2,29 +2,56 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #fafafa;
-  --foreground: #363636;
-
-  --pattern-color: #efefef;
-  --pattern-size: 1.3rem;
+.bg-pattern {
+  background-image: radial-gradient(
+    hsl(var(--pattern-color)) calc(var(--pattern-bg-size) * 0.1),
+    hsl(var(--background)) calc(var(--pattern-bg-size) * 0.1)
+  );
+  background-size: var(--pattern-size) var(--pattern-size);
 }
 
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #1a1a1a;
-    --foreground: #e0e0e0;
+    /** wave */
+    --wave-bg-color: rgba(74, 144, 226, 0.24);
+    --wave-color: rgba(74, 144, 226, 0.12);
+    --wave-duration: 12s;
 
-    --pattern-color: #2a2a2a;
+    /** background */
+    --background: 0, 0%, 98%;
+
+    --pattern-color: 0, 0%, 94%;
+    --pattern-bg-size: 1.3rem;
+    --pattern-size: 1.49rem;
+
+    /** text */
+    --foreground: 240 5.3% 26.1%;
+    --muted-foreground: 240 3.8% 46.1%;
+
+    /** error */
+    --destructive: 351.3 94.5% 71.4%;
+
+    --border: 240 5.9% 90%;
+
+    /** button */
+    --primary: 212 72% 59%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 240 5.9% 90%;
+    --secondary-foreground: 240 3.7% 15.9%;
+  }
+  .dark {
+    /** wave */
+    --wave-bg-color: rgba(42, 42, 42, 0.75);
+    --wave-color: rgba(42, 42, 42, 0.5);
+
+    /** background */
+    --pattern-color: 0, 0%, 16%;
   }
 }
 
-body {
-  color: var(--foreground);
-  background-color: var(--background);
-  background-image: radial-gradient(
-    var(--pattern-color) calc(var(--pattern-size) * 0.1),
-    var(--background) calc(var(--pattern-size) * 0.1)
-  );
-  background-size: 1.49rem 1.49rem;
+@layer base {
+  body {
+    @apply bg-background bg-pattern text-foreground;
+  }
 }

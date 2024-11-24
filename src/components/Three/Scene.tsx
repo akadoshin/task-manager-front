@@ -1,7 +1,9 @@
+"use client";
+
 import { Suspense, useEffect, useRef } from "react";
 
 import { Mesh } from "three";
-import { Canvas, ThreeElements } from "@react-three/fiber";
+import { Canvas, ThreeElements, useFrame } from "@react-three/fiber";
 import { Environment, Loader, OrbitControls } from "@react-three/drei";
 
 import Model from "./Model";
@@ -37,6 +39,11 @@ function Box(props: ThreeElements["mesh"]) {
     };
   }, []);
 
+  useFrame(({ clock }) => {
+    const time = clock.getElapsedTime();
+    meshRef.current.position.y = Math.cos(time) * 0.2;
+  });
+
   return (
     <mesh
       {...props}
@@ -47,6 +54,7 @@ function Box(props: ThreeElements["mesh"]) {
     >
       <OrbitControls
         enableZoom={false}
+        enablePan={false}
         // autoRotate
         autoRotateSpeed={2}
         maxPolarAngle={Math.PI / 2}
@@ -65,12 +73,7 @@ function Box(props: ThreeElements["mesh"]) {
 export default function Scene() {
   return (
     <div className="h-[50vh] w-full absolute top-4">
-      <Canvas
-        linear
-        shadows
-        dpr={[1, 1.5]}
-        gl={{ antialias: true }}
-      >
+      <Canvas linear shadows dpr={[1, 1.5]} gl={{ antialias: true }}>
         <ambientLight intensity={Math.PI / 0.85} />
         <spotLight
           position={[-25, 45, 5]}
