@@ -20,13 +20,26 @@
     /** background */
     --background: 0, 0%, 98%;
 
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 47.4% 11.2%;
+
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
     --pattern-color: 0, 0%, 94%;
     --pattern-bg-size: 1.3rem;
     --pattern-size: 1.49rem;
 
+    --input: 214.3 31.8% 91.4%;
+    --ring: 215 20.2% 65.1%;
+    --radius: 0.5rem;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 47.4% 11.2%;
+
     /** text */
     --foreground: 240 5.3% 26.1%;
-    --muted-foreground: 240 3.8% 46.1%;
+    --muted: 220 13% 91%;
+    --muted-foreground: 217.9 10.6% 64.9%;
 
     /** error */
     --destructive: 351.3 94.5% 71.4%;
@@ -35,23 +48,96 @@
 
     /** button */
     --primary: 212 72% 59%;
-    --primary-foreground: 0 0% 100%;
+    --primary-foreground: 240 5.9% 90%;
 
     --secondary: 240 5.9% 90%;
     --secondary-foreground: 240 3.7% 15.9%;
+
+    --input-background: 0 0% 100%;
+    --button-background: 0 0% 100%;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 212 85% 90%;
+    --sidebar-accent-hover: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+    
+    /** tabs */
+    --tabs-background: 210 40% 96.1%;
   }
   .dark {
     /** wave */
     --wave-bg-color: rgba(42, 42, 42, 0.75);
     --wave-color: rgba(42, 42, 42, 0.5);
+    --wave-duration: 12s;
 
     /** background */
+    --background: 240 5.3% 12%;
+    --popover: 240 5.3% 18%;
+    --popover-foreground: 0 0% 100%;
+
+    /** accent */
+    --accent: 210 40% 36%;
+    --accent-foreground: 0 0% 100%;
+
+    /** pattern */
     --pattern-color: 0, 0%, 16%;
+    --pattern-bg-size: 1.3rem;
+    --pattern-size: 1.49rem;
+
+    /** input */
+    --input: 214.3 31.8% 24.5%;
+    --ring: 215 20.2% 30%;
+    --radius: 0.5rem;
+    --card: 240 5.3% 14%;
+    --card-foreground: 0 0% 100%;
+
+    /** text */
+    --foreground: 0 0% 100%;
+    --muted: 0 0% 60%;
+    --muted-foreground: 0 0% 80%;
+
+    /** error */
+    --destructive: 351.3 80% 46%;
+
+    /** borders */
+    --border: 240 5.9% 30%;
+
+    /** button */
+    --primary: 212 72% 45%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 240 5.9% 20%;
+    --secondary-foreground: 0 0% 90%;
+
+    --input-background: 240 5.3% 18%;
+    --button-background: 240 5.3% 12%;
+
+    /** sidebar */
+    --sidebar-background: 240 5.3% 12%;
+    --sidebar-foreground: 0 0% 100%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 240 5.3% 96%;
+    --sidebar-accent: 212 85% 40%;
+    --sidebar-accent-hover: 240 4.8% 25%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 240 5.3% 18%;
+    --sidebar-ring: 217.2 91.2% 45%;
+
+    /** tabs */
+    --tabs-background: 217.2 32.6% 17.5%;
   }
 }
 
 @layer base {
+  * {
+    @apply border-border;
+  }
+
   body {
-    @apply bg-background bg-pattern text-foreground;
+    @apply bg-background text-foreground bg-pattern;
   }
 }

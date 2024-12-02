@@ -48,7 +48,7 @@ export default function Wave({
           animate={{
             d: wave0,
           }}
-          transition={{ duration: 16, repeat: Infinity, ease: "linear" }}
+          transition={{ duration: 16, repeat: Infinity, ease: "easeInOut" }}
         />
         <motion.path
           stroke="none"
@@ -58,7 +58,7 @@ export default function Wave({
           animate={{
             d: wave1,
           }}
-          transition={{ duration: 32, repeat: Infinity, ease: "linear" }}
+          transition={{ duration: 32, repeat: Infinity, ease: "easeInOut" }}
         />
       </motion.svg>
     </section>
